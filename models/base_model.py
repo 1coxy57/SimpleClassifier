@@ -14,8 +14,8 @@ class Model:
         self.res_queue = queue.Queue()
         self.run = threading.Event()
         self.run.set()
-        self.i_t = threading.Thread(target=self._loop,daemon=True).start()
         self._warm()
+        self.i_t = threading.Thread(target=self._loop,daemon=True).start()
 
     def _warm(self):
         try:
