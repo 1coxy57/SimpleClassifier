@@ -15,25 +15,31 @@ BASE_MODELS = [
     "yolo11n.pt", "yolo11s.pt", "yolo11m.pt", "yolo11l.pt", "yolo11x.pt",
 ]
 
+class NoBaseModels(Exception):
+    pass
+
 def load_models(models: list[str] = BASE_MODELS,path: str | Path = "./models/models") -> list[Model]:
     
     base_models: list[Model] = []
     weights = Path(path)
 
-    for m in models:
-        dir = weights / m
+    for mod in models:
+        dir = weights / mod
         try:
             if not dir.exists():
                 logging.info(f"{m} does not exist in the current directory.")
                 continue
 
-            y_m = YOLO(str(dir))
+            yolo_model = YOLO(str(dir))
 
             model_id = str(uuid.uuid4())
-            model = Model(y_m,m,model_id)
+            model = Model(yolo_model,mod,model_id)
             base_models.append(model)
 
         except Exception as e:
             logging.info(f"Failed to load {m}: {str(e)}")
             raise RuntimeError("Failed loading")
+
+    if not base_models:
+        raise NoBaseModels(f"No base models loaded.")
     return base_models
