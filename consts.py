@@ -7,12 +7,12 @@ class Detection(BaseModel):
     bbox: List[float]
 
 class ImageInfo(BaseModel):
-    size: list[int,int]
+    size: List[int,int]
     type: str
 
 class ModelInfo(BaseModel):
     name: str
-    confidence_threshold: Optional[float]
+    conf_threshold: Optional[float]
 
 class ClassificationResponse(BaseModel):
     success: bool
