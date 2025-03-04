@@ -1,0 +1,1 @@
+If you want to add your own yolo models, add them to the models/models folder and run the API.
