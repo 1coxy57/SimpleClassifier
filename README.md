@@ -1,5 +1,5 @@
 # SimpleClassifier
-This simple classifier creates a API for interacting with YOLO models. 
+This simple classifier creates a API using [FastAPI](https://fastapi.tiangolo.com/) for interacting with YOLO models. 
 
 
 not done wip 
