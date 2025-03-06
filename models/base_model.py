@@ -17,7 +17,7 @@ class Model:
         self._warm()
         self.i_t = threading.Thread(target=self._loop,daemon=True).start()
 
-    def _warm(self):
+    def _warm(self) -> bool:
         try:
             dr = np.zeros((320,320,3),dtype=np.unit8)
             print(f'warming {self.name}')
